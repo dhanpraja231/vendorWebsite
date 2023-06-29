@@ -29,7 +29,7 @@
         </div>
 
         <div class="input-field">
-            <input type="submit" class="submit" value="Login" id="">
+            <input type="submit" class="submit" value="Login" id="login-button">
         </div>
 
         <div class="two-col">
@@ -48,16 +48,15 @@
       event.preventDefault(); // Prevent form submission
       
       // Check the login credentials
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
+    //   var username = document.getElementById('username').value;
+    //   var password = document.getElementById('password').value;
   
       // Perform your authentication logic here
       // For demonstration purposes, let's assume the login is successful
       var isLoginSuccessful = true;
-  
       if (isLoginSuccessful) {
         // Redirect to the next page
-        window.location.href = 'http://127.0.0.1:5500/admin%20page/dashboard%20admin/dash.html';
+        window.location.href = 'http://127.0.0.1:5500/he/vendorWebsite/truck/admin%20page/dashboard%20admin/dash.html#';
       } else {
         // Handle failed login
         alert('Invalid username or password. Please try again.');

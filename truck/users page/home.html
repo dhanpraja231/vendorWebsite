@@ -118,13 +118,14 @@
         <!--  your orders -->
         <h1>Order Management</h1>
 
-  <table>
+  <table id="product-table">
     <thead>
       <tr>
-        <th>Order ID</th>
+        <!-- <th>Order ID</th> -->
         <th>Customer Name</th>
-        <th>Order Date</th>
-        <th>Total Price</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Address</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -148,13 +149,58 @@
   </table>
         
         <!-- Terms and conditions -->
-        <div>
+        <!-- <div>
             <input type="checkbox" id="terms" name="terms" required>
             <label for="terms">I agree to the terms and conditions</label>
         </div>
 
-        <!-- Submit button -->
-        <button type="submit">Place Order</button>
+        Submit button 
+        <button type="submit">Place Order</button> -->
     </form>
+
+    <script>
+      // Fetch data from the API
+      fetch("http://127.0.0.1:80/getAllOrdersAsAdmin")
+        .then(response => response.json())
+        .then(data => {
+          // Manipulate the DOM to populate the table rows with data
+          const tableBody = document.querySelector("#product-table tbody");
+    
+          // Clear the existing content
+          tableBody.innerHTML = "";
+    
+          // Iterate through the data and create table rows for each product
+          data.forEach(product => {
+            const row = document.createElement("tr");
+    
+            const nameCell = document.createElement("td");
+            nameCell.textContent = product.UserName;
+            row.appendChild(nameCell);
+    
+            const priceCell = document.createElement("td");
+            priceCell.textContent = product.ProductName;
+            row.appendChild(priceCell);
+
+            const quantityCell = document.createElement("td");
+            quantityCell.textContent = product.Quantity;
+            row.appendChild(quantityCell);
+
+            const addressCell = document.createElement("td");
+            addressCell.textContent = product.Address;
+            row.appendChild(addressCell);
+
+            const orderCell = document.createElement("td");
+            orderCell.textContent = product.OrderStatus;
+            row.appendChild(orderCell);
+    
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    </script>
+
 </body>
+
 </html>

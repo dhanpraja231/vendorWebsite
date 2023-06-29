@@ -10,6 +10,17 @@
             padding: 0;
             background-color: #f2f2f2;
         }
+
+        table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
         
         header {
             background-color: #333;
@@ -84,10 +95,82 @@
             </div>
             <div class="content">
                 <h3>WELCOME ADMIN!</h3>
-               <img src= c:\Users\santh\Downloads\WhatsApp Image 2023-06-29 at 17.44.35.jpeg
+               <img src= '/he/vendorWebsite/truck/admin page/dashboard admin/WhatsApp Image 2023-06-29 at 17.44.35.jpeg'
+               width="400px"
                
             </div>
         </div>
     </main>
+    <table id="product-table">
+        <thead>
+          <tr>
+            <!-- <th>Order ID</th> -->
+            <th>Customer Name</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12345</td>
+            <td>John Doe</td>
+            <td>June 29, 2023</td>
+            <td>₹85,000</td>
+            <td>Processing</td>
+          </tr>
+          <tr>
+            <td>67890</td>
+            <td>Jane Smith</td>
+            <td>June 30, 2023</td>
+            <td>₹2,40,567</td>
+            <td>Shipped</td>
+          </tr>
+          <!-- Add more rows for additional orders -->
+        </tbody>
+      </table>
+    <script>
+        // Fetch data from the API
+        fetch("http://127.0.0.1:80/getAllOrdersAsAdmin")
+          .then(response => response.json())
+          .then(data => {
+            // Manipulate the DOM to populate the table rows with data
+            const tableBody = document.querySelector("#product-table tbody");
+      
+            // Clear the existing content
+            tableBody.innerHTML = "";
+      
+            // Iterate through the data and create table rows for each product
+            data.forEach(product => {
+              const row = document.createElement("tr");
+      
+              const nameCell = document.createElement("td");
+              nameCell.textContent = product.UserName;
+              row.appendChild(nameCell);
+      
+              const priceCell = document.createElement("td");
+              priceCell.textContent = product.ProductName;
+              row.appendChild(priceCell);
+  
+              const quantityCell = document.createElement("td");
+              quantityCell.textContent = product.Quantity;
+              row.appendChild(quantityCell);
+  
+              const addressCell = document.createElement("td");
+              addressCell.textContent = product.Address;
+              row.appendChild(addressCell);
+  
+              const orderCell = document.createElement("td");
+              orderCell.textContent = product.OrderStatus;
+              row.appendChild(orderCell);
+      
+              tableBody.appendChild(row);
+            });
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      </script>
 </body>
 </html>
