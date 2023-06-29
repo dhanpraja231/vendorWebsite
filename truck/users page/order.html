@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Page</title>
+    
+    <link rel="stylesheet" href="order.css">
+    
+</head>
+<body>
+    <h1>Order Page</h1>
+
+    <form action="process_order.php" method="post">
+        <!-- Product information section -->
+        <h2>Product Information</h2>
+        <div>
+            <label for="product">Product:</label>
+            <select id="product" name="product">
+                <option value="product1">Product 1</option>
+                <option value="product2">Product 2</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+        <!-- Customer information section -->
+        <h2>Customer Information</h2>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <!-- Add more customer fields as needed (e.g., address, phone number) -->
+
+        <!-- Shipping information section -->
+        <h2>Shipping Information</h2>
+        <div>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+        </div>
+        <!-- Add more shipping fields as needed (e.g., city, country, zip code) -->
+
+        <!-- Payment information section -->
+        <h2>Payment Information</h2>
+        <div>
+            <label for="card">Credit Card Number:</label>
+            <input type="text" id="card" name="card" required>
+        </div>
+        <div>
+            <label for="expiry">Expiration Date:</label>
+            <input type="text" id="expiry" name="expiry" required>
+        </div>
+        <!-- Add more payment fields as needed (e.g., CVV, billing address) -->
+
+        <!-- Order review section -->
+        <h2>Order Review</h2>
+        <!-- Display a summary of the selected product, customer, and shipping details -->
+        
+        <!-- Terms and conditions -->
+        <div>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the terms and conditions</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
